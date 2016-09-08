@@ -1,0 +1,304 @@
+#include <iostream>
+#include <pigpio.h>
+#include <stdio.h>
+
+#define COL1	0
+#define COL2	1
+#define COL3	4
+#define COL4	17
+#define COL5	27
+#define COL6	22
+#define COL7	10
+#define COL8	9
+#define COL9	11
+#define COL10	5
+
+#define ROW1	18
+#define ROW2	23
+#define ROW3	24
+#define ROW4	25
+#define ROW5	8
+#define ROW6	7
+#define ROW7	12
+#define ROW8	16
+#define ROW9	20
+#define ROW10	21
+
+using namespace std;
+
+void motorOnTime(int motorNumber, int time);
+void motorOn(int motorNumber);
+void motorOff(int motorNumber);
+void turnOff(int row, int col);
+void turnOn(int row, int col);
+void turnOffRow();
+void turnOffCol();
+
+int main()
+{
+
+    if (gpioInitialise() >= 0){
+        gpioSetMode(0, PI_OUTPUT);
+        gpioSetMode(1, PI_OUTPUT);
+        gpioSetMode(4, PI_OUTPUT);
+        gpioSetMode(17, PI_OUTPUT);
+        gpioSetMode(27, PI_OUTPUT);
+        gpioSetMode(22, PI_OUTPUT);
+        gpioSetMode(10, PI_OUTPUT);
+        gpioSetMode(9, PI_OUTPUT);
+        gpioSetMode(11, PI_OUTPUT);
+        gpioSetMode(5, PI_OUTPUT);
+        turnOffCol();
+        gpioSetMode(18, PI_OUTPUT);
+        gpioSetMode(23, PI_OUTPUT);
+        gpioSetMode(24, PI_OUTPUT);
+        gpioSetMode(25, PI_OUTPUT);
+        gpioSetMode(8, PI_OUTPUT);
+        gpioSetMode(7, PI_OUTPUT);
+        gpioSetMode(12, PI_OUTPUT);
+        gpioSetMode(16, PI_OUTPUT);
+        gpioSetMode(20, PI_OUTPUT);
+        gpioSetMode(21, PI_OUTPUT);
+        turnOffRow();
+        gpioSetPullUpDown(0, PI_PUD_DOWN);
+        gpioSetPullUpDown(1, PI_PUD_DOWN);
+        gpioSetPullUpDown(4, PI_PUD_DOWN);
+        gpioSetPullUpDown(17, PI_PUD_DOWN);
+        gpioSetPullUpDown(27, PI_PUD_DOWN);
+        gpioSetPullUpDown(22, PI_PUD_DOWN);
+        gpioSetPullUpDown(10, PI_PUD_DOWN);
+        gpioSetPullUpDown(9, PI_PUD_DOWN);
+        gpioSetPullUpDown(11, PI_PUD_DOWN);
+        gpioSetPullUpDown(5, PI_PUD_DOWN);
+        gpioSetPullUpDown(18, PI_PUD_DOWN);
+        gpioSetPullUpDown(23, PI_PUD_DOWN);
+        gpioSetPullUpDown(24, PI_PUD_DOWN);
+        gpioSetPullUpDown(25, PI_PUD_DOWN);
+        gpioSetPullUpDown(8, PI_PUD_DOWN);
+        gpioSetPullUpDown(7, PI_PUD_DOWN);
+        gpioSetPullUpDown(12, PI_PUD_DOWN);
+        gpioSetPullUpDown(16, PI_PUD_DOWN);
+        gpioSetPullUpDown(20, PI_PUD_DOWN);
+        gpioSetPullUpDown(21, PI_PUD_DOWN);
+    }
+    cout << "Hello world!" << endl;
+
+
+
+    for(int i = 1; i<=100; i++)
+    motorOnTime(i, 500000);
+//        for(int i=1;i<=10;i++){
+//        turnOn(1, 1);
+//		gpioDelay(1000000);
+//		turnOff(1, 1);
+//		printf("%d\n", i);
+//		}
+
+    gpioTerminate();
+    return 0;
+}
+
+
+void motorOnTime(int motorNumber, int time){
+	if (motorNumber <= 10){
+		turnOn(1, motorNumber);
+		gpioDelay(time);
+		turnOff(1, motorNumber);
+	}else if(motorNumber%10 == 0){
+		turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
+		gpioDelay(time);
+		turnOff((motorNumber/10) , (motorNumber/(motorNumber/10)));
+	}else{//Ex: 88 = (((88/10)+1), (88modulo10)
+		turnOn((motorNumber/10)+1, motorNumber%10);
+		gpioDelay(time);
+		turnOff((motorNumber/10)+1, motorNumber%10);
+	}
+}
+
+void motorOn(int motorNumber){
+	if (motorNumber <= 10){
+		turnOn(1, motorNumber);
+	}
+	else{//Ex: 88 = (((88/10)+1), (88modulo10)
+		turnOn(((motorNumber/10)+1), (motorNumber%10));
+	}
+}
+
+//void motorOff(int motorNumber){
+//	if (motorNumber <= 10){
+//		turnOff(1, motorNumber);
+//	}
+//	else{//Ex: 88 = (((88/10)+1), (88modulo10)
+//		turnOff(((motorNumber/10)+1), (motorNumber%10));
+//	}
+//}
+
+void turnOn(int row, int col){
+int o=0;
+switch(row){
+    case 1:
+    	gpioWrite(18, o);
+    break;
+    case 2:
+        gpioWrite(23, o);
+    break;
+    case 3:
+    	gpioWrite(24, o);
+    break;
+    case 4:
+        gpioWrite(25, o);
+    break;
+    case 5:
+    	gpioWrite(8, o);
+    break;
+    case 6:
+        gpioWrite(7, o);
+    break;
+    case 7:
+    	gpioWrite(12, o);
+    break;
+    case 8:
+        gpioWrite(16, o);
+    break;
+    case 9:
+    	gpioWrite(20, o);
+    break;
+    case 10:
+        gpioWrite(21, o);
+    break;
+}
+	printf("TURNED ON ROW%d", row);
+	//o=1;
+switch(col){
+    case 1:
+    	gpioWrite(0, o);
+    break;
+    case 2:
+        gpioWrite(1, o);
+    break;
+    case 3:
+    	gpioWrite(4, o);
+    break;
+    case 4:
+        gpioWrite(17, o);
+    break;
+    case 5:
+    	gpioWrite(27, o);
+    break;
+    case 6:
+    gpioWrite(22, o);
+    break;
+    case 7:
+    	gpioWrite(10, o);
+    break;
+    case 8:
+        gpioWrite(9, o);
+    break;
+    case 9:
+    	gpioWrite(11, o);
+    break;
+    case 10:
+        gpioWrite(5, o);
+    break;
+}
+    printf("TURNED ON COL%d\n", col);
+    }
+
+void turnOff(int row, int col){
+int o=1;
+switch(row){
+    case 1:
+    	gpioWrite(18, o);
+    break;
+    case 2:
+        gpioWrite(23, o);
+    break;
+    case 3:
+    	gpioWrite(24, o);
+    break;
+    case 4:
+        gpioWrite(25, o);
+    break;
+    case 5:
+    	gpioWrite(8, o);
+    break;
+    case 6:
+        gpioWrite(7, o);
+    break;
+    case 7:
+    	gpioWrite(12, o);
+    break;
+    case 8:
+        gpioWrite(16, o);
+    break;
+    case 9:
+    	gpioWrite(20, o);
+    break;
+    case 10:
+        gpioWrite(21, o);
+    break;
+}
+//o=0;
+switch(col){
+    case 1:
+    	gpioWrite(0, o);
+    break;
+    case 2:
+        gpioWrite(1, o);
+    break;
+    case 3:
+    	gpioWrite(4, o);
+    break;
+    case 4:
+        gpioWrite(17, o);
+    break;
+    case 5:
+    	gpioWrite(27, o);
+    break;
+    case 6:
+    gpioWrite(22, o);
+    break;
+    case 7:
+    	gpioWrite(10, o);
+    break;
+    case 8:
+        gpioWrite(9, o);
+    break;
+    case 9:
+    	gpioWrite(11, o);
+    break;
+    case 10:
+        gpioWrite(5, o);
+
+    break;
+}
+
+}
+void turnOffRow(){
+int o=1;
+    	gpioWrite(18, o);
+        gpioWrite(23, o);
+    	gpioWrite(24, o);
+        gpioWrite(25, o);
+    	gpioWrite(8, o);
+        gpioWrite(7, o);
+    	gpioWrite(12, o);
+        gpioWrite(16, o);
+    	gpioWrite(20, o);
+        gpioWrite(21, o);
+}
+void turnOffCol(){
+int o=1;
+    	gpioWrite(0, o);
+        gpioWrite(1, o);
+    	gpioWrite(4, o);
+        gpioWrite(17, o);
+    	gpioWrite(27, o);
+        gpioWrite(22, o);
+    	gpioWrite(10, o);
+        gpioWrite(9, o);
+    	gpioWrite(11, o);
+        gpioWrite(5, o);
+
+}
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1472261113 source:/home/pi/motor_control/main.cpp
+	<iostream>
+	<pigpio.h>
+	<stdio.h>
+	</home/pi/motor_control/functions.hpp>
+
+1472932831 source:/home/pi/haptikos/matrixControl/main.cpp
+	<iostream>
+	<pigpio.h>
+	<stdio.h>
+	"functions.hpp"
+
+1472261070 /home/pi/haptikos/matrixControl/functions.hpp
+
