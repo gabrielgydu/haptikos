@@ -4,28 +4,31 @@
 
 
 #endif // FUNCTIONS_HPP_INCLUDED
+//
 
-#define COL1    4
-#define COL2    17
-#define COL3    27
-#define COL4    22
-#define COL5    10
-#define COL6    9
-#define COL7    11
-#define COL8    0
-#define COL9    5
-#define COL10   6
+#define COL10    4
+#define COL9    17
+#define COL8    27
+#define COL7    22
+#define COL6    10
+#define COL5    9
+#define COL4    11
+#define COL3    0
+#define COL2    5
+#define COL1   6
 
-#define ROW1    18
-#define ROW2    23
-#define ROW3    24
-#define ROW4    25
-#define ROW5    8
-#define ROW6    7
-#define ROW7    12
-#define ROW8    16
-#define ROW9    20
-#define ROW10   21
+
+
+#define ROW10    18
+#define ROW9    23
+#define ROW8    24
+#define ROW7    25
+#define ROW6    8
+#define ROW5    7
+#define ROW4    12
+#define ROW3    16
+#define ROW2    20
+#define ROW1   21
 
 void configPins();
 void motorOnTime(int motorNumber, int time);
@@ -49,6 +52,10 @@ void sadnessNew();
 void surprise();
 void surpriseNew();
 
+void letraA();
+void letraB();
+void letraC();
+
 void braillePointOn();
 void braillePointOff();
 void braillePointOnTime();
@@ -70,7 +77,7 @@ void configPins(){
         gpioSetMode(COL8, PI_OUTPUT);
         gpioSetMode(COL9, PI_OUTPUT);
         gpioSetMode(COL10, PI_OUTPUT);
-        turnOffCol();
+
         gpioSetMode(ROW1, PI_OUTPUT);
         gpioSetMode(ROW2, PI_OUTPUT);
         gpioSetMode(ROW3, PI_OUTPUT);
@@ -81,27 +88,31 @@ void configPins(){
         gpioSetMode(ROW8, PI_OUTPUT);
         gpioSetMode(ROW9, PI_OUTPUT);
         gpioSetMode(ROW10, PI_OUTPUT);
+
+        gpioSetPullUpDown(COL1, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL2, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL3, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL4, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL5, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL6, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL7, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL8, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL9, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL10, PI_PUD_DOWN);
+
+        gpioSetPullUpDown(ROW1, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW2, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW3, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW4, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW5, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW6, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW7, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW8, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW9, PI_PUD_DOWN);
+        gpioSetPullUpDown(ROW10, PI_PUD_DOWN);
+
         turnOffRow();
-        /*gpioSetPullUpDown(0, PI_PUD_DOWN);
-        gpioSetPullUpDown(1, PI_PUD_DOWN);
-        gpioSetPullUpDown(4, PI_PUD_DOWN);
-        gpioSetPullUpDown(17, PI_PUD_DOWN);
-        gpioSetPullUpDown(27, PI_PUD_DOWN);
-        gpioSetPullUpDown(22, PI_PUD_DOWN);
-        gpioSetPullUpDown(10, PI_PUD_DOWN);
-        gpioSetPullUpDown(9, PI_PUD_DOWN);
-        gpioSetPullUpDown(11, PI_PUD_DOWN);
-        gpioSetPullUpDown(5, PI_PUD_DOWN);
-        gpioSetPullUpDown(18, PI_PUD_DOWN);
-        gpioSetPullUpDown(23, PI_PUD_DOWN);
-        gpioSetPullUpDown(24, PI_PUD_DOWN);
-        gpioSetPullUpDown(25, PI_PUD_DOWN);
-        gpioSetPullUpDown(8, PI_PUD_DOWN);
-        gpioSetPullUpDown(7, PI_PUD_DOWN);
-        gpioSetPullUpDown(12, PI_PUD_DOWN);
-        gpioSetPullUpDown(16, PI_PUD_DOWN);
-        gpioSetPullUpDown(20, PI_PUD_DOWN);
-        gpioSetPullUpDown(21, PI_PUD_DOWN);*/
+        turnOffCol();
 }
 
 void motorOnTime(int motorNumber, int time){
@@ -334,6 +345,28 @@ void motorOnTime4(int m1, int m2, int m3, int m4, int time){
     motorOff(m4);
 }
 
+void motorOn3(int m1, int m2, int m3){
+    motorOn(m1);
+    motorOn(m2);
+    motorOn(m3);
+}
+
+void motorOff3(int m1, int m2, int m3){
+    motorOff(m1);
+    motorOff(m2);
+    motorOff(m3);
+}
+
+void motorOnTime3(int m1, int m2, int m3, int time){
+    motorOn(m1);
+    motorOn(m2);
+    motorOn(m3);
+    gpioDelay(time*1000);
+    motorOff(m1);
+    motorOff(m2);
+    motorOff(m3);
+}
+
 void motorOnTime2(int m1, int m2, int time){
     motorOn(m1);
     motorOn(m2);
@@ -351,6 +384,97 @@ void motorOff2(int m1, int m2){
     motorOff(m1);
     motorOff(m2);
 }
+
+void letraA(){
+
+    motorOnTime(99, 125);
+    motorOnTime2(88, 89, 125);
+    motorOnTime(78, 125);
+    motorOnTime2(67, 68, 125);
+    motorOnTime2(57, 58, 125);
+    motorOnTime(47, 125);
+    motorOnTime2(36, 37, 125);
+    motorOnTime2(26, 27, 125);
+    motorOnTime2(15, 16, 125);
+    motorOnTime2(24, 25, 125);
+    motorOnTime2(34, 35, 125);
+    motorOnTime(44, 125);
+    motorOnTime2(53, 54, 125);
+    motorOnTime2(63, 64, 125);
+    motorOnTime(73, 125);
+    motorOnTime2(82, 83, 125);
+    motorOnTime(92, 125);
+
+    motorOnTime(68, 100);
+    motorOnTime2(68, 67, 50);
+    motorOnTime(67, 100);
+    motorOnTime2(67, 66, 50);
+    motorOnTime(66, 100);
+    motorOnTime2(66, 65, 50);
+    motorOnTime(65, 100);
+    motorOnTime2(65, 64, 50);
+    motorOnTime(64, 100);
+    motorOnTime2(64, 63, 50);
+    motorOnTime(63, 100);
+
+}
+
+void letraB(){
+
+    motorOnTime(18, 100);
+    motorOnTime(28, 100);
+    motorOnTime(38, 100);
+    motorOnTime(48, 100);
+    motorOnTime(58, 100);
+    motorOnTime(68, 100);
+    motorOnTime(78, 100);
+    motorOnTime(88, 100);
+    motorOnTime(98, 100);
+
+    motorOnTime(17, 100);
+    motorOnTime(16, 100);
+    motorOnTime2(15, 25, 125);
+    motorOnTime2(24, 25, 125);
+    motorOnTime(34, 100);
+    motorOnTime2(44, 45, 125);
+    motorOnTime(56, 100);
+    motorOnTime(57, 100);
+    motorOnTime(58, 100);
+    motorOnTime(57, 100);
+    motorOnTime(56, 100);
+    motorOnTime(55, 100);
+    motorOnTime(64, 100);
+    motorOnTime(74, 100);
+    motorOnTime(85, 100);
+    motorOnTime(96, 100);
+    motorOnTime(97, 100);
+    motorOnTime(98, 100);
+
+}
+
+void letraC(){
+    motorOnTime(33, 125);
+    motorOnTime2(23, 24, 125);
+    motorOnTime(14, 125);
+    motorOnTime(15, 125);
+    motorOnTime(16, 125);
+    motorOnTime(17, 125);
+    motorOnTime2(27, 28, 125);
+    motorOnTime2(38, 39, 125);
+    motorOnTime(49, 125);
+    motorOnTime(59, 125);
+    motorOnTime(69, 125);
+    motorOnTime2(79, 78, 125);
+    motorOnTime2(88, 87, 125);
+    motorOnTime(97, 125);
+    motorOnTime(96, 125);
+    motorOnTime(95, 125);
+    motorOnTime(94, 125);
+    motorOnTime2(84, 83, 125);
+    motorOnTime(73, 125);
+
+}
+
 
 void surpriseNew(){
     motorOnTime(55, 200);
@@ -388,6 +512,25 @@ void anger(){
     motorOnTime2(52, 53, 200);
     motorOnTime(62, 200);
     motorOnTime(71, 200);
+}
+
+void disgust(){
+    motorOnTime3(46, 45, 55, 200);
+    motorOnTime3(47, 34, 54, 200);
+    motorOnTime3(48, 23, 53, 200);
+    motorOnTime3(49, 12, 52, 200);
+    motorOnTime4(45, 46, 55, 56, 200);
+}
+
+void fear(){
+    motorOnTime3(17, 23, 53, 200);
+    motorOnTime3(16, 22, 52, 200);
+    motorOnTime3(17, 23, 53, 200);
+    motorOnTime3(16, 22, 52, 200);
+    motorOnTime3(17, 23, 53, 200);
+    motorOnTime3(16, 22, 52, 200);
+    motorOnTime3(17, 23, 53, 200);
+    motorOnTime3(16, 22, 52, 200);
 }
 
 void happiness(){
@@ -522,22 +665,22 @@ void braillePointOnTime(int point, int time){
 void braillePointOnAlt(int point){
 	switch(point){
 		case 4:
-			motorOn2(13, 14);
+			motorOn(11);
 			break;
 		case 5:
-			motorOn2(53, 54);
+			motorOn(51);
 			break;
 		case 6:
-			motorOn2(93, 94);
+			motorOn(91);
 			break;
 		case 1:
-			motorOn2(17, 18);
+			motorOn( 20);
 			break;
 		case 2:
-			motorOn2(57, 58);
+			motorOn(60);
 		break;
 		case 3:
-			motorOn2(97, 98);
+			motorOn( 100);
 		break;
 		default:
 			break;
@@ -547,22 +690,22 @@ void braillePointOnAlt(int point){
 void braillePointOffAlt(int point){
 	switch(point){
 		case 4:
-			motorOff2(13, 14);
+			motorOff(11);
 			break;
 		case 5:
-			motorOff2(53, 54);
+			motorOff(51);
 			break;
 		case 6:
-			motorOff2(93, 94);
+			motorOff(91);
 			break;
 		case 1:
-			motorOff2(17, 18);
+			motorOff( 20);
 			break;
 		case 2:
-			motorOff2(57, 58);
+			motorOff( 60);
 		break;
 		case 3:
-			motorOff2(97, 98);
+			motorOff( 100);
 		break;
 		default:
 			break;

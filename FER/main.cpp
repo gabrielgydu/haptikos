@@ -25,6 +25,7 @@ double res;
 int n=0, p=0;
 float baseline=0;
 float features[9];
+int feature_counter=0;
 
 Mat image, img;
 FILE *fp=NULL;
@@ -41,19 +42,14 @@ int main ( int argc,char **argv ) {
     CvSVM SVM;
     CvSVM SVM2;
     // Load SVM data
-    SVM.load("bin_rbf_mug.xml");// 2-Class neutral/non-neutral
-    SVM2.load("multi_rbf_mug.xml");// 6-Class anger/disgust/fear/happiness/sadness/surprise
+    SVM.load("binary.xml");// 2-Class neutral/non-neutral
+    SVM2.load("multiclass.xml");// 6-Class anger/disgust/fear/happiness/sadness/surprise
 
     // Set up Camera
     raspicam::RaspiCam_Cv Camera;
     Camera.set( CV_CAP_PROP_FORMAT, CV_8UC1 );
     Camera.set( CV_CAP_PROP_FRAME_WIDTH, 640);
     Camera.set( CV_CAP_PROP_FRAME_HEIGHT, 480);
-
-    // Set up text file
-    fp = fopen("dyFeatures.txt", "w");
-                if(!fp)
-                printf("errou\n");
 
     //Open camera
     cout<<"Opening Camera..."<<endl;
@@ -89,50 +85,31 @@ int main ( int argc,char **argv ) {
             putText(img, "Neutra", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
           }else{
             response = SVM2.predict(sampleMat);
-            switch(response){
-              case 1:
+            if (response == 1){
                 printf("anger\n");
                 putText(img, "raiva", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              case 2:
+            }else if(response == 2){
                 printf("disgust\n");
                 putText(img, "desgosto", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              case 3:
+            }else if(response == 3){
                 printf("fear\n");
                 putText(img, "medo", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              case 4:
+            }else if(response == 4){
                 printf("happiness\n");
                 putText(img, "felicidade", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              case 5:
+            }else if(response == 5){
                 printf("sadness\n");
                 putText(img, "tristeza", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              case 6:
+            }else if(response == 6){
                 printf("surprise\n");
                 putText(img, "surpresa", cvPoint(30,30), FONT_HERSHEY_SIMPLEX, 1, CV_RGB(255,255,255));
-                break;
-              }
-          }
+            }
         }
-      }
-    p=0;
-    }
+        }
     char key = (char)waitKey(10); //delay N millis, usually long enough to display and capture input
     switch (key){
       case 'a':
         imwrite("image.jpg", img);
-        break;
-      case 's':
-        /*imwrite("0.jpg", img);
-        fprintf(fp, "%d\n{", n);
-        extractFeatures();
-        for(int k=0; k<=10; k++)
-          fprintf(fp,"%.2f\n", features[k]);
-          fprintf(fp, "}\n");
-          n++;*/
         break;
         case 'q':
         case 'Q':

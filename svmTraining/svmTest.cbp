@@ -35,11 +35,8 @@
 					<Add option="-lopencv_video" />
 					<Add option="-lopencv_videostab" />
 					<Add option="-lrt" />
-					<Add option="-lncurses" />
 					<Add option="-lmmal" />
 					<Add option="-lmmal_core" />
-					<Add option="-lraspicam" />
-					<Add option="-lraspicam_cv" />
 					<Add option="-lmmal_util" />
 					<Add directory="/opt/vc/lib" />
 					<Add directory="/usr/local/bin" />

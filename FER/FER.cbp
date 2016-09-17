@@ -83,9 +83,11 @@
 					<Add option="-lmmal" />
 					<Add option="-lmmal_core" />
 					<Add option="-lraspicam" />
+					<Add option="-lraspicam_cv" />
 					<Add option="-lmmal_util" />
-					<Add option="-lwiringPi" />
 					<Add library="/usr/local/lib/libraspicam.so" />
+					<Add library="/usr/local/lib/libraspicam_cv.so" />
+					<Add library="/home/pi/stasm/build/libstasm.a" />
 					<Add directory="/usr/local/lib" />
 					<Add directory="/usr/local/bin" />
 					<Add directory="/opt/vc/lib" />

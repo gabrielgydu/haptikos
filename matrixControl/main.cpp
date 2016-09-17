@@ -15,6 +15,8 @@ int main()
 
     //for(int i = 1; i<=100; i++)
     //motorOnTime(i, 500000);
+    for(int j = 1; j<=100; j++)
+            motorOnTime(j, 1);
 
     while(1){
         int key = getchar();
@@ -27,32 +29,44 @@ int main()
         }else if(key=='4'){
             surprise();
         }else if(key=='5'){
-            //disgust();
-            braillePointOn(1);
-            gpioDelay(3000000);
-            braillePointOff(1);
-            gpioDelay(1000000);
-            braillePointOn(1);
-            braillePointOn(2);
-            gpioDelay(3000000);
-            braillePointOff(1);
-            braillePointOff(1);
-            gpioDelay(1000000);
-            braillePointOn(1);
-            braillePointOn(4);
-            gpioDelay(3000000);
-            braillePointOff(1);
-            braillePointOff(4);
+                brailleCell("100000", 1000);
+                gpioDelay(3000000);
+                brailleCell("110000", 1000);
+                gpioDelay(3000000);
+                brailleCell("100100", 1000);
+                gpioDelay(3000000);
+                brailleCell("100110", 1000);
+                gpioDelay(3000000);
+                brailleCell("100010", 1000);
+                gpioDelay(3000000);
+                brailleCell("110100", 1000);
+                gpioDelay(3000000);
+                brailleCell("110110", 1000);
+                gpioDelay(3000000);
+                brailleCell("110010", 1000);
+                gpioDelay(3000000);
+                brailleCell("010100", 1000);
+                gpioDelay(3000000);
         }else if(key=='6'){
-            //fear();
-            //for(int i = 1; i<=100; i++)
-            //motorOnTime(i, 500);
-            brailleCell("111111", 1000);
+            for(int j = 1; j<=100; j++)
+            motorOnTime(j, 10);
+            for(int i = 1; i<=20; i++)
+            motorOnTime(i, 500);
         }else if(key=='7'){
             sadnessNew();
-
         }else if(key=='8'){
             surpriseNew();
+        }else if(key=='9'){
+            fear();
+        }else if(key=='0'){
+            disgust();
+        }
+        else if(key=='A'){
+            letraA();
+        }else if(key=='B'){
+            letraB();
+        }else if(key=='C'){
+            letraC();
         }
         else if(key=='*'){
             gpioTerminate();
