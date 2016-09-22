@@ -1,9 +1,13 @@
 #include <iostream>
 #include <pigpio.h>
 #include <stdio.h>
+#include <dirent.h>
 #include "functions.hpp"
+#include "alphabet.hpp"
 
 using namespace std;
+
+FILE *fp = NULL;
 
 int main()
 {
@@ -12,6 +16,10 @@ int main()
         configPins();
     }
     cout << "Controle da matriz" << endl;
+
+    fp = fopen("input.txt", "r");
+    if(!fp)
+    printf("Error");
 
     //for(int i = 1; i<=100; i++)
     //motorOnTime(i, 500000);
@@ -48,10 +56,21 @@ int main()
                 brailleCell("010100", 1000);
                 gpioDelay(3000000);
         }else if(key=='6'){
-            for(int j = 1; j<=100; j++)
-            motorOnTime(j, 10);
-            for(int i = 1; i<=20; i++)
-            motorOnTime(i, 500);
+//            int m=1;
+            char ch = '-';
+            while(ch != EOF){
+            ch = fgetc(fp);
+            letra(ch);
+            printf("%c\n", ch);
+            gpioDelay(300000);
+//            if(ch == '1'){
+//            motorOnTime(m, 500);
+//            m++;
+//            }
+            }
+
+//            for(int i = 1; i<=20; i++)
+//            motorOnTime(i, 500);
         }else if(key=='7'){
             sadnessNew();
         }else if(key=='8'){
@@ -67,6 +86,11 @@ int main()
             letraB();
         }else if(key=='C'){
             letraC();
+        }
+        else if(key=='m'){
+            motorMultiplex(23, 43, 25, 1000);
+        }else if(key=='M'){
+            motorOnTime3(23, 43, 25, 1000);
         }
         else if(key=='*'){
             gpioTerminate();

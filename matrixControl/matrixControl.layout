@@ -3,12 +3,34 @@
 	<ActiveTarget name="Release" />
 	<File name="functions.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="468" topLine="6" />
+			<Cursor1 position="8350" topLine="315" />
 		</Cursor>
+		<Folding>
+			<Collapse line="118" />
+			<Collapse line="134" />
+			<Collapse line="144" />
+		</Folding>
+	</File>
+	<File name="alphabet.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="17806" topLine="249" />
+		</Cursor>
+		<Folding>
+			<Collapse line="216" />
+			<Collapse line="248" />
+			<Collapse line="262" />
+			<Collapse line="277" />
+			<Collapse line="300" />
+		</Folding>
 	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1482" topLine="22" />
+			<Cursor1 position="1801" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="input.txt" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
