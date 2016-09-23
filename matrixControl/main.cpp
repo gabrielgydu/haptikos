@@ -91,6 +91,19 @@ int main()
             motorMultiplex(23, 43, 25, 1000);
         }else if(key=='M'){
             motorOnTime3(23, 43, 25, 1000);
+        }else if(key=='t'){
+            motorOnTime(1, 500);
+            motorOnTime(2, 500);
+            motorOnTime(11, 500);
+            motorOnTime(12, 500);
+            motorOnTime(41, 500);
+            motorOnTime(42, 500);
+            motorOnTime(51, 500);
+            motorOnTime(52, 500);
+            motorOnTime(81, 500);
+            motorOnTime(82, 500);
+            motorOnTime(91, 500);
+            motorOnTime(92, 500);
         }
         else if(key=='*'){
             gpioTerminate();

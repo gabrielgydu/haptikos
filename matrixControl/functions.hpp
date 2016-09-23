@@ -116,6 +116,11 @@ void configPins(){
 }
 
 void motorOnTime(int motorNumber, int time){
+    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
+        motorNumber=motorNumber+10;
+    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
+        motorNumber=motorNumber-10;
+
 	if (motorNumber <= 10){
 		turnOn(1, motorNumber);
 		gpioDelay(time*1000);
