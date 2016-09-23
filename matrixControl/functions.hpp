@@ -137,6 +137,11 @@ void motorOnTime(int motorNumber, int time){
 }
 
 void motorOn(int motorNumber){
+    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
+        motorNumber=motorNumber+10;
+    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
+        motorNumber=motorNumber-10;
+
     if (motorNumber <= 10){
         turnOn(1, motorNumber);
     }else if(motorNumber%10 == 0){
@@ -147,6 +152,11 @@ void motorOn(int motorNumber){
 }
 
 void motorOff(int motorNumber){
+    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
+        motorNumber=motorNumber+10;
+    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
+        motorNumber=motorNumber-10;
+
     if (motorNumber <= 10){
         turnOff(1, motorNumber);
     }else if(motorNumber%10 == 0){
@@ -350,6 +360,14 @@ void motorOnTime4(int m1, int m2, int m3, int m4, int time){
     motorOff(m4);
 }
 
+void motorOnTime8(int m1, int m2, int m3, int m4, int m5, int m6, int m7, int m8, int time){
+    motorOn4(m1, m2, m3, m4);
+    motorOn4(m5, m6, m7, m8);
+    gpioDelay(time*1000);
+    motorOff4(m1, m2, m3, m4);
+    motorOff4(m5, m6, m7, m8);
+}
+
 void motorOn3(int m1, int m2, int m3){
     motorOn(m1);
     motorOn(m2);
@@ -393,103 +411,47 @@ void motorOff2(int m1, int m2){
     motorOff(m1);
     motorOff(m2);
 }
-//
-//void letraA(){
-//
-//    motorOnTime(99, 125);
-//    motorOnTime2(88, 89, 125);
-//    motorOnTime(78, 125);
-//    motorOnTime2(67, 68, 125);
-//    motorOnTime2(57, 58, 125);
-//    motorOnTime(47, 125);
-//    motorOnTime2(36, 37, 125);
-//    motorOnTime2(26, 27, 125);
-//    motorOnTime2(15, 16, 125);
-//    motorOnTime2(24, 25, 125);
-//    motorOnTime2(34, 35, 125);
-//    motorOnTime(44, 125);
-//    motorOnTime2(53, 54, 125);
-//    motorOnTime2(63, 64, 125);
-//    motorOnTime(73, 125);
-//    motorOnTime2(82, 83, 125);
-//    motorOnTime(92, 125);
-//
-//    motorOnTime(68, 100);
-//    motorOnTime2(68, 67, 50);
-//    motorOnTime(67, 100);
-//    motorOnTime2(67, 66, 50);
-//    motorOnTime(66, 100);
-//    motorOnTime2(66, 65, 50);
-//    motorOnTime(65, 100);
-//    motorOnTime2(65, 64, 50);
-//    motorOnTime(64, 100);
-//    motorOnTime2(64, 63, 50);
-//    motorOnTime(63, 100);
-//
-//}
-//
-//void letraB(){
-//
-//    motorOnTime(18, 100);
-//    motorOnTime(28, 100);
-//    motorOnTime(38, 100);
-//    motorOnTime(48, 100);
-//    motorOnTime(58, 100);
-//    motorOnTime(68, 100);
-//    motorOnTime(78, 100);
-//    motorOnTime(88, 100);
-//    motorOnTime(98, 100);
-//
-//    motorOnTime(17, 100);
-//    motorOnTime(16, 100);
-//    motorOnTime2(15, 25, 125);
-//    motorOnTime2(24, 25, 125);
-//    motorOnTime(34, 100);
-//    motorOnTime2(44, 45, 125);
-//    motorOnTime(56, 100);
-//    motorOnTime(57, 100);
-//    motorOnTime(58, 100);
-//    motorOnTime(57, 100);
-//    motorOnTime(56, 100);
-//    motorOnTime(55, 100);
-//    motorOnTime(64, 100);
-//    motorOnTime(74, 100);
-//    motorOnTime(85, 100);
-//    motorOnTime(96, 100);
-//    motorOnTime(97, 100);
-//    motorOnTime(98, 100);
-//
-//}
-//
-//void letraC(){
-//    motorOnTime(33, 125);
-//    motorOnTime2(23, 24, 125);
-//    motorOnTime(14, 125);
-//    motorOnTime(15, 125);
-//    motorOnTime(16, 125);
-//    motorOnTime(17, 125);
-//    motorOnTime2(27, 28, 125);
-//    motorOnTime2(38, 39, 125);
-//    motorOnTime(49, 125);
-//    motorOnTime(59, 125);
-//    motorOnTime(69, 125);
-//    motorOnTime2(79, 78, 125);
-//    motorOnTime2(88, 87, 125);
-//    motorOnTime(97, 125);
-//    motorOnTime(96, 125);
-//    motorOnTime(95, 125);
-//    motorOnTime(94, 125);
-//    motorOnTime2(84, 83, 125);
-//    motorOnTime(73, 125);
-//
-//}
 
 
 void surpriseNew(){
-    motorOnTime(55, 200);
-    motorOnTime4(45, 54, 56, 65, 200);
-    motorOnTime4(44, 46, 64, 66, 200);
-    motorOnTime4(35, 53, 75, 57, 200);
+93, 95, 96, 98
+
+93, 95, 96, 98, 83, 85, 86, 88
+
+83, 85, 86, 88
+
+83, 85, 86, 88, 73, 75, 76, 78
+
+73, 75, 76, 78
+
+73, 75, 76, 78, 63, 65, 66, 68
+
+63, 65, 66, 68
+
+63, 65, 66, 68, 53, 55, 56, 58
+
+53, 55, 56, 58
+
+53, 55, 56, 58, 43, 45, 46, 48
+
+43, 45, 46, 48
+
+43, 45, 46, 48, 33, 34, 37, 38 
+
+33, 34, 37, 38 
+
+33, 34, 37, 38, 22, 23, 28, 29
+
+22, 23, 28, 29
+
+22, 23, 28, 29, 11, 12, 19, 20 
+
+11, 12, 19, 20 
+
+1, 11, 19, 10
+
+1, 10
+
 }
 
 void surprise(){
@@ -524,27 +486,34 @@ void anger(){
 }
 
 void disgust(){
-    motorOnTime3(46, 45, 55, 150);
-    motorOnTime3(36, 34, 54, 150);
-    motorOnTime3(26, 23, 53, 150);
-    motorOnTime3(16, 12, 52, 150);
-    motorOnTime3(6, 1, 51, 150);
-    gpioDelay(50000);
-//    motorOnTime4(45, 46, 55, 56, 150);
+    motorOnTime(45, 150);
+    motorOnTime2(44, 34, 150);
+    motorOnTime2(43, 23, 150);
+    motorOnTime2(42, 12, 150);
+    motorOnTime2(41, 1, 150);
+    gpioDelay(100000);
+    motorOn4(44, 45, 46, 47);
+    motorOn4(54, 55, 56, 57);
+    gpioDelay(100000);
+    motorOff4(44, 45, 46, 47);
+    motorOff4(54, 55, 56, 57);
 }
 
 void fear(){
-//    motorOnTime3(17, 23, 53, 200);
-    motorOnTime3(16, 22, 52, 200);
-//    motorOnTime3(17, 23, 53, 200);
-    motorOnTime3(16, 22, 52, 200);
-//    motorOnTime3(17, 23, 53, 200);
-    motorOnTime3(16, 22, 52, 200);
-//    motorOnTime3(17, 23, 53, 200);
-    motorOnTime3(16, 22, 52, 200);
+    for(int j=0; i<4; i++){
+        motorOnTime2(1, 5, 75);
+        motorOn(41);
+        motorOnTime2(1, 5, 75);
+        motorOff(41);
+        motorOnTime2(11, 6, 75);
+        motorOn(41);
+        motorOnTime2(11, 6, 75);
+        motorOff(41);
+    }
 }
 
 void happiness(){
+    motorOnTime(50, 175);
     motorOnTime(60, 175);
     motorOnTime(70, 175);
     motorOnTime2(79, 80, 175);
@@ -557,9 +526,11 @@ void happiness(){
     motorOnTime2(71, 72, 175);
     motorOnTime(61, 175);
     motorOnTime(51, 175);
+    motorOnTime(41, 175);
 }
 
 void sadnessNew(){
+    motorOnTime(60, 175);
     motorOnTime(50, 175);
     motorOnTime(40, 175);
     motorOnTime2(29, 30, 175);
@@ -572,6 +543,7 @@ void sadnessNew(){
     motorOnTime2(21, 22, 175);
     motorOnTime(31, 175);
     motorOnTime(41, 175);
+    motorOnTime(51, 175);
 }
 
 void sadness(){
