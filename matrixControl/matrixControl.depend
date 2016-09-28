@@ -5,15 +5,17 @@
 	<stdio.h>
 	</home/pi/motor_control/functions.hpp>
 
-1474511301 source:/home/pi/haptikos/matrixControl/main.cpp
+1474686191 source:/home/pi/haptikos/matrixControl/main.cpp
 	<iostream>
 	<pigpio.h>
 	<stdio.h>
 	<dirent.h>
+	<string.h>
+	<sstream>
 	"functions.hpp"
 	"alphabet.hpp"
 
-1474606558 /home/pi/haptikos/matrixControl/functions.hpp
+1474687564 /home/pi/haptikos/matrixControl/functions.hpp
 
-1474411456 /home/pi/haptikos/matrixControl/alphabet.hpp
+1474686417 /home/pi/haptikos/matrixControl/alphabet.hpp
 
