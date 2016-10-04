@@ -5,14 +5,16 @@
 #include <stdio.h>
 
 #include <string.h>
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
 
-#include <stasm_lib.h>
-#include <stasm.h>
+#include </home/pi/stasm/stasm/stasm_lib.h>
+#include </home/pi/stasm/stasm/stasm.h>
 
 using namespace cv;
+using namespace stasm;
+using namespace std;
 
 char expressions[7][20] = {"anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"};
 int e=0;
@@ -29,7 +31,7 @@ float landmarks[2 * stasm_NLANDMARKS]; // x,y coords (note the 2)
 
 double extractFeature(float x1, float y1, float x2, float y2){
     double result;
-    //line(img, cvPoint(x1, y1), cvPoint(x2, y2), CV_RGB(255,255,255));
+    line(img, cvPoint(x1, y1), cvPoint(x2, y2), CV_RGB(255,255,255));
     // Euclidean distance
     result = (sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2)))/baseline;
     if(feature_counter<9){
@@ -78,7 +80,7 @@ int main(int argc, char *argv[])
 
     for(e = 0; e <= 6; e++){
 
-    sprintf(txt_filename, "/home/pi/haptikos/data/features/%s.txt", expressions[e]);
+    sprintf(txt_filename, "/home/pi/haptikos/data/features/%s_2.txt", expressions[e]);
     fp = fopen(txt_filename, "w");
                 if(!fp)
                 printf("ERROR opening %s\n", txt_filename);
@@ -103,8 +105,8 @@ int main(int argc, char *argv[])
                         //    line(img, cvPoint(landmarks[i*2], landmarks[i*2+1]), cvPoint(landmarks[i*2], landmarks[i*2+1]), CV_RGB(255,255,255));
                         extractFeatures();
                         }
-                        //sprintf(stasm_filename, "/home/pi/haptikos/data/dataset_stasm/%s/%d_%03d.jpg", expressions[e], s, take);
-                        //imwrite(stasm_filename, img);
+                        sprintf(stasm_filename, "/home/pi/haptikos/data/dataset_stasm_2/%s/%d_%03d.jpg", expressions[e], s, take);
+                        imwrite(stasm_filename, img);
 
                     }
             }

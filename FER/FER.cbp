@@ -59,6 +59,7 @@
 					<Add directory="/usr/local/include" />
 					<Add directory="/usr/local/share/OpenCV/haarcascades" />
 					<Add directory="/home/pi/stasm/stasm" />
+					<Add directory="/home/pi/stasm/build" />
 				</Compiler>
 				<Linker>
 					<Add option="-lopencv_calib3d" />

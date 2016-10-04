@@ -102,3 +102,16 @@
 
 1474468044 /home/gabriel/Dropbox/01 TC/dev/svmTraining/svm_data.hpp
 
+1475243201 source:/home/pi/haptikos/svmTest/main.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/ml/ml.hpp>
+	<stdio.h>
+	<stdlib.h>
+	"svm_data_bin.hpp"
+	"svm_data.hpp"
+
+1475227095 /home/pi/haptikos/svmTest/svm_data_bin.hpp
+
+1475227095 /home/pi/haptikos/svmTest/svm_data.hpp
+

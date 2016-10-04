@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1475489035 source:/home/pi/haptikos/bluetooth/bluetooth/main.cpp
+	<stdio.h>
+	<unistd.h>
+	<sys/socket.h>
+	<bluetooth/bluetooth.h>
+	<bluetooth/rfcomm.h>
+

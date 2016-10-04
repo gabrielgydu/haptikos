@@ -79,13 +79,15 @@
 
 1442755762 /home/pi/svmTest/svm_data_bin_mug.hpp
 
-1473736663 source:/home/pi/haptikos/svmTraining/main.cpp
+1475239499 source:/home/pi/haptikos/svmTraining/main.cpp
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/ml/ml.hpp>
 	<stdio.h>
 	<stdlib.h>
-	"svm_data.hpp"
+	"svm_data_bin.hpp"
 
 1473736714 /home/pi/haptikos/svmTraining/svm_data.hpp
+
+1475238915 /home/pi/haptikos/svmTraining/svm_data_bin.hpp
 

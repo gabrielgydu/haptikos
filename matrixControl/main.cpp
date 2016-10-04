@@ -97,7 +97,7 @@ int main()
       char ch;
       while(ch != EOF){
         ch = fgetc(fp);
-        letra(ch, 100);
+        letra(ch, 50);
         printf("%c\n", ch);
         gpioDelay(1000000);
       }
@@ -110,7 +110,7 @@ int main()
       getline(cin, input);
       if(!input.empty()){
         while(input[k] != '\0'){
-          letra(input[k], 150);
+          letra(input[k], 50);
           gpioDelay(1000000);
           k++;
         }

@@ -9,8 +9,8 @@ using namespace cv;
 
 int main()
 {
-    Mat labelsMat(1727, 1, CV_32FC1, labelsBin);
-    Mat trainingDataMat(1727, 10, CV_32FC1, trainingDataBin);
+    Mat labelsMat(891, 1, CV_32FC1, labelsBin);
+    Mat trainingDataMat(891, 10, CV_32FC1, trainingDataBin);
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
@@ -20,8 +20,9 @@ int main()
 
     // Train the SVM
     CvSVM SVM;
-    SVM.train_auto(trainingDataMat, labelsMat, Mat(), Mat(), params);
-    SVM.save("binary.xml");
+    SVM.train_auto(trainingDataMat, labelsMat, Mat(), Mat(), params, 20, CvSVM::get_default_grid(CvSVM::C), CvSVM::get_default_grid(CvSVM::GAMMA), CvSVM::get_default_grid(CvSVM::P), CvSVM::get_default_grid(CvSVM::NU), CvSVM::get_default_grid(CvSVM::COEF), CvSVM::get_default_grid(CvSVM::DEGREE), true);
+    //SVM.train_auto(trainingDataMat, labelsMat, Mat(), Mat(), params);
+    SVM.save("binary_balanced.xml");
     waitKey(0);
 
 }
