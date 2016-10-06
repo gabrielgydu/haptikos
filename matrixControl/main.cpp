@@ -110,7 +110,7 @@ int main()
       getline(cin, input);
       if(!input.empty()){
         while(input[k] != '\0'){
-          letra(input[k], 50);
+          letra(input[k], 5000);
           gpioDelay(1000000);
           k++;
         }
@@ -166,6 +166,19 @@ int main()
 
         motorOnTime(m, time);
       }
+    }else if(input[0] == '9'){
+    int j=1;
+      do{
+      input.clear();
+      getline(cin, input);
+      if(!input.empty()){
+      stringstream(input) >> j;
+      motorOn(j);
+
+      }
+      }while(input.compare("a") != 0);
+      for(int k=1; k<= 100; k++)
+      motorOff(k);
     }
   }
 }while(input.compare("exit"));

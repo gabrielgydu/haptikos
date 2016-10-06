@@ -405,7 +405,7 @@ void motorOff2(int m1, int m2){
 
 void angerNew(){
     for(int k=0; k<5; k++){
-        motorOnTime8(44, 47, 53, 54, 57, 58, 64, 67, 100);
+        motorOnTime8(44, 47, 53, 54, 57, 58, 64, 67, 5000);
         gpioDelay(100000);
     }
 }
