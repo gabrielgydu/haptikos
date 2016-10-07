@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1470971301 source:/home/pi/motor_control/main.cpp
+	<iostream>
+	<pigpio.h>
+	<stdio.h>
+
+1475879341 source:/home/pi/gpio_test/main.cpp
+	<iostream>
+	<pigpio.h>
+	<stdio.h>
+
