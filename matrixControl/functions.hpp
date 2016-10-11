@@ -16,6 +16,8 @@
 #define COL3    0
 #define COL2    5
 #define COL1   6
+#define COL12 19
+#define COL11 13
 
 #define ROW10    18
 #define ROW9    23
@@ -68,6 +70,8 @@ void configPins(){
         gpioSetMode(COL8, PI_OUTPUT);
         gpioSetMode(COL9, PI_OUTPUT);
         gpioSetMode(COL10, PI_OUTPUT);
+        gpioSetMode(COL11, PI_OUTPUT);
+        gpioSetMode(COL12, PI_OUTPUT);
 
         gpioSetMode(ROW1, PI_OUTPUT);
         gpioSetMode(ROW2, PI_OUTPUT);
@@ -90,6 +94,8 @@ void configPins(){
         gpioSetPullUpDown(COL8, PI_PUD_DOWN);
         gpioSetPullUpDown(COL9, PI_PUD_DOWN);
         gpioSetPullUpDown(COL10, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL11, PI_PUD_DOWN);
+        gpioSetPullUpDown(COL12, PI_PUD_DOWN);
 
         gpioSetPullUpDown(ROW1, PI_PUD_DOWN);
         gpioSetPullUpDown(ROW2, PI_PUD_DOWN);
@@ -107,53 +113,75 @@ void configPins(){
 }
 
 void motorOnTime(int motorNumber, int time){
-    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
-        motorNumber=motorNumber+10;
-    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
-        motorNumber=motorNumber-10;
 
 	if (motorNumber <= 10){
-		turnOn(1, motorNumber);
+        if(motorNumber == 9 || motorNumber == 10){
+            turnOn(1, motorNumber+2);
+            gpioDelay(time*1000);
+            turnOff(1, motorNumber+2);
+        }else{
+        turnOn(1, motorNumber);
 		gpioDelay(time*1000);
 		turnOff(1, motorNumber);
+		}
 	}else if(motorNumber%10 == 0){
-		turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
-		gpioDelay(time*1000);
-		turnOff((motorNumber/10) , (motorNumber/(motorNumber/10)));
+        if(motorNumber == 10 || motorNumber == 50 || motorNumber == 100){
+            turnOn((motorNumber/10), (motorNumber/(motorNumber/10))+2);
+            gpioDelay(time*1000);
+            turnOff((motorNumber/10) , (motorNumber/(motorNumber/10))+2);
+        }else{
+            turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
+            gpioDelay(time*1000);
+            turnOff((motorNumber/10) , (motorNumber/(motorNumber/10)));
+		}
 	}else{//Ex: 88 = (((88/10)+1), (88modulo10)
-		turnOn((motorNumber/10)+1, motorNumber%10);
-		gpioDelay(time*1000);
-		turnOff((motorNumber/10)+1, motorNumber%10);
+        if(motorNumber == 49 || motorNumber == 99){
+            turnOn((motorNumber/10)+1, (motorNumber%10)+2);
+            gpioDelay(time*1000);
+            turnOff((motorNumber/10)+1, (motorNumber%10)+2);
+        }else{
+            turnOn((motorNumber/10)+1, motorNumber%10);
+            gpioDelay(time*1000);
+            turnOff((motorNumber/10)+1, motorNumber%10);
+		}
 	}
 }
 
 void motorOn(int motorNumber){
-    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
-        motorNumber=motorNumber+10;
-    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
-        motorNumber=motorNumber-10;
-
     if (motorNumber <= 10){
-        turnOn(1, motorNumber);
+        if(motorNumber == 9 || motorNumber == 10)
+            turnOn(1, motorNumber+2);
+        else
+            turnOn(1, motorNumber);
     }else if(motorNumber%10 == 0){
-        turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
+        if(motorNumber == 10 || motorNumber == 50 || motorNumber == 100)
+            turnOn((motorNumber/10), (motorNumber/(motorNumber/10))+2);
+        else
+            turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
     }else{//Ex: 88 = (((88/10)+1), (88modulo10)
-        turnOn((motorNumber/10)+1, motorNumber%10);
+        if(motorNumber == 49 || motorNumber == 99)
+            turnOn((motorNumber/10)+1, (motorNumber%10)+2);
+        else
+            turnOn((motorNumber/10)+1, motorNumber%10);
     }
 }
 
 void motorOff(int motorNumber){
-    if (motorNumber == 1 || motorNumber == 2 || motorNumber == 41 || motorNumber == 42 || motorNumber == 81 || motorNumber == 82)
-        motorNumber=motorNumber+10;
-    else if(motorNumber == 11 || motorNumber == 12 || motorNumber == 51 || motorNumber == 52 || motorNumber == 91 || motorNumber == 92)
-        motorNumber=motorNumber-10;
-
     if (motorNumber <= 10){
-        turnOff(1, motorNumber);
+        if(motorNumber == 9 || motorNumber == 10)
+            turnOff(1, motorNumber+2);
+        else
+            turnOff(1, motorNumber);
     }else if(motorNumber%10 == 0){
-        turnOff((motorNumber/10), (motorNumber/(motorNumber/10)));
+        if(motorNumber == 10 || motorNumber == 50 || motorNumber == 100)
+            turnOff((motorNumber/10), (motorNumber/(motorNumber/10))+2);
+        else
+            turnOff((motorNumber/10), (motorNumber/(motorNumber/10)));
     }else{//Ex: 88 = (((88/10)+1), (88modulo10)
-        turnOff((motorNumber/10)+1, motorNumber%10);
+        if(motorNumber == 49 || motorNumber == 99)
+            turnOff((motorNumber/10)+1, (motorNumber%10)+2);
+        else
+            turnOff((motorNumber/10)+1, motorNumber%10);
     }
 }
 
@@ -190,6 +218,8 @@ switch(row){
     case 10:
         gpioWrite(ROW10, o);
     break;
+    default:
+    break;
 }
 	//printf("TURNED ON ROW%d", row);
 	o=0;
@@ -223,6 +253,14 @@ switch(col){
     break;
     case 10:
         gpioWrite(COL10, o);
+    break;
+        case 11:
+        gpioWrite(COL11, o);
+    break;
+        case 12:
+        gpioWrite(COL12, o);
+    break;
+    default:
     break;
 }
     //printf("TURNED ON COL%d\n", col);
@@ -261,6 +299,8 @@ switch(row){
     case 10:
         gpioWrite(ROW10, o);
     break;
+    default:
+    break;
 }
 o=1;
 switch(col){
@@ -294,11 +334,19 @@ switch(col){
     case 10:
         gpioWrite(COL10, o);
     break;
+        case 11:
+        gpioWrite(COL11, o);
+    break;
+        case 12:
+        gpioWrite(COL12, o);
+    break;
+    default:
+    break;
 }
 
 }
-void turnOffRow(){
-int o=0;
+void turnOffCol(){
+int o=1;
     	gpioWrite(COL1, o);
     	gpioWrite(COL2, o);
     	gpioWrite(COL3, o);
@@ -309,9 +357,11 @@ int o=0;
     	gpioWrite(COL8, o);
     	gpioWrite(COL9, o);
     	gpioWrite(COL10, o);
+        gpioWrite(COL11, o);
+        gpioWrite(COL12, o);
 }
-void turnOffCol(){
-int o=1;
+void turnOffRow(){
+int o=0;
     	gpioWrite(ROW1, o);
     	gpioWrite(ROW2, o);
     	gpioWrite(ROW3, o);
@@ -405,7 +455,7 @@ void motorOff2(int m1, int m2){
 
 void angerNew(){
     for(int k=0; k<5; k++){
-        motorOnTime8(44, 47, 53, 54, 57, 58, 64, 67, 5000);
+        motorOnTime8(44, 47, 53, 54, 57, 58, 64, 67, 150);
         gpioDelay(100000);
     }
 }
@@ -618,13 +668,13 @@ void sadness(){
 void braillePointOn(int point){
 	switch(point){
 		case 4:
-			motorOn2(1, 2);
+			motorOn2(11, 12);
 			break;
 		case 5:
 			motorOn2(41, 42);
 			break;
 		case 6:
-			motorOn2(91, 92);
+			motorOn2(81, 82);
 			break;
 		case 1:
 			motorOn2(9, 10);
@@ -643,13 +693,13 @@ void braillePointOn(int point){
 void braillePointOff(int point){
     switch(point){
         case 4:
-            motorOff2(1, 2);
+            motorOff2(11, 12);
             break;
         case 5:
             motorOff2(41, 42);
             break;
         case 6:
-            motorOff2(91, 92);
+            motorOff2(81, 82);
             break;
         case 1:
             motorOff2(9, 10);

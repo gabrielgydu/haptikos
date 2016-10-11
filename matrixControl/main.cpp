@@ -110,7 +110,7 @@ int main()
       getline(cin, input);
       if(!input.empty()){
         while(input[k] != '\0'){
-          letra(input[k], 5000);
+          letra(input[k], 50);
           gpioDelay(1000000);
           k++;
         }
@@ -166,19 +166,35 @@ int main()
 
         motorOnTime(m, time);
       }
-    }else if(input[0] == '9'){
+    }else if(input[0] == 'c'){
     int j=1;
       do{
       input.clear();
       getline(cin, input);
       if(!input.empty()){
-      stringstream(input) >> j;
-      motorOn(j);
+      //stringstream(input) >> j;
+      cout << "Motor ON: "<< j << endl;
+      motorOnTime(j, 1000);
+      j++;
 
       }
       }while(input.compare("a") != 0);
       for(int k=1; k<= 100; k++)
       motorOff(k);
+    }else if(input[0] == '9' && input[1] == '9'){
+      //for(int k=1; k<= 100; k++)
+      //motorOnTime(k, 1000);
+        turnOn(10, 1);
+        gpioDelay(1000000);
+        turnOff(10, 1);
+
+      /*for(int h=1; h<=12; h++){
+      turnOn(0, h);
+      gpioDelay(1000000);
+      turnOff(0, h);
+      gpioDelay(1000000);
+      }*/
+
     }
   }
 }while(input.compare("exit"));

@@ -9,3 +9,8 @@
 	<pigpio.h>
 	<stdio.h>
 
+1476126100 source:/home/pi/haptikos/gpio_test/main.cpp
+	<iostream>
+	<pigpio.h>
+	<stdio.h>
+

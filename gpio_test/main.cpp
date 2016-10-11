@@ -26,7 +26,7 @@ int main()
     }
     cout << "Hello world!" << endl;
 
-    for(int i = 1; i<=10; i++){
+    /*for(int i = 1; i<=10; i++){
     for(int m = 1; m<=4; m++)
     motorOnTime(m, 50);
 
@@ -48,6 +48,13 @@ int main()
     motorOff(1);
     motorOff(4);
     gpioDelay(50000);
+    }*/
+    for(int i=0;  i<99; i++)
+    {
+    gpioWrite(17, 1);
+    gpioDelay(1000000);
+    gpioWrite(17, 0);
+    gpioDelay(1000000);
     }
 
     gpioTerminate();
