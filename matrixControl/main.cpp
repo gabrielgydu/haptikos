@@ -33,7 +33,7 @@ int main()
        << "5 - Arquivo - Braille " << endl
        //<< "6 -  " << endl
        //<< "7 -  " << endl
-       << "8 - Ligar Motor " << endl;
+       << "8 - Ligar Motor " << endl
        << "0 - Configuracoes " << endl;
 
   if (!getline(cin, input))return -1;
@@ -120,7 +120,7 @@ int main()
     }else if(input[0] == '6'){
 
     }else if(input[0] == '7'){
-      
+
     }else if(input[0] == '8'){
       input.clear();
       int m=0, time=100;
@@ -152,6 +152,7 @@ int main()
           }
         }
       }while(input.compare("up") != 0);
+    }
     }
 }while(input.compare("exit"));
   gpioTerminate();
