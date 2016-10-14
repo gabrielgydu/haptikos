@@ -110,7 +110,7 @@ int main()
       getline(cin, input);
       if(!input.empty()){
         while(input[k] != '\0'){
-          letra(input[k], 50);
+          letra(input[k], 150);
           gpioDelay(1000000);
           k++;
         }

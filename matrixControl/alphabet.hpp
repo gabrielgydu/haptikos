@@ -1198,6 +1198,8 @@ void letraZ(int time){
     motorOnTime2(3, 4, time/2);
     motorOnTime(3, time);
 
+    gpioDelay(500000);
+
     motorMultiplex(13, 14, 3, time/2);
 
     motorOnTime2(13, 14, time);
@@ -1217,6 +1219,8 @@ void letraZ(int time){
     motorOnTime2(87, 88, time);
     motorMultiplex(98, 87, 88, time/2);
     motorOnTime(98, time);
+
+    gpioDelay(500000);
 
     motorOnTime2(97, 98, time/2);
 
