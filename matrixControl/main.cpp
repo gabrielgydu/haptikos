@@ -12,6 +12,7 @@ using namespace std;
 
 FILE *fp = NULL;
 int j=0;
+int tAlfabeto = 100;
 string input;
 
 int main()
@@ -24,70 +25,67 @@ int main()
 
   cout << "H A P T I K O S " << endl;
   do{
-  cout << "Enter command: " << endl
-       << "1 - Old Haptices " << endl
-       << "2 - New Haptices " << endl
-       << "3 - Opt Haptices " << endl
-       << "4 - Read File - Alphabet " << endl
-       << "5 - Input - Alphabet " << endl
-       << "6 - Read File - Braille " << endl
-       << "7 - Input - Braille " << endl
-       << "8 - Turn on motor " << endl;
+  cout << "Menu: " << endl
+       << "1 - Haptices " << endl
+       << "2 - Alfabeto de forma" << endl
+       << "3 - Braille " << endl
+       << "4 - Arquivo - Alfabeto " << endl
+       << "5 - Arquivo - Braille " << endl
+       //<< "6 -  " << endl
+       //<< "7 -  " << endl
+       << "8 - Ligar Motor " << endl;
+       << "0 - Configuracoes " << endl;
 
   if (!getline(cin, input))return -1;
 
   if (!input.empty()) {
     if(input[0] == '1'){
       do{
-      input.clear();
-      cout << "Old Haptices - Select pattern: " << endl;
-      getline(cin, input);
-      if(!input.empty())
-        if(!input.compare("an"))anger();
-        else if(!input.compare("di"))disgust();
-        else if(!input.compare("fe"))fear();
-        else if(!input.compare("ha"))happiness();
-        else if(!input.compare("sa"))sadness();
-        else if(!input.compare("su"))surprise();
-        else
-          cout << "Invalid." << endl;
+        input.clear();
+        cout << "Haptices: " << endl;
+        getline(cin, input);
+        if(!input.empty())
+          if(!input.compare("an"))angerNew();
+          else if(!input.compare("di"))disgust();
+          else if(!input.compare("fe"))fear();
+          else if(!input.compare("ha"))happiness();
+          else if(!input.compare("sa"))sadnessNew();
+          else if(!input.compare("su"))surpriseNew1();
+          else
+            cout << "Invalid." << endl;
       }while(input.compare("up") != 0);
     }else if(input[0] == '2'){
       do{
-      input.clear();
-      cout << "New Haptices - Select pattern: " << endl;
-      getline(cin, input);
-      if(!input.empty())
-        if(!input.compare("an"))angerNew();
-        else if(!input.compare("di"))disgust();
-        else if(!input.compare("fe"))fear();
-        else if(!input.compare("ha"))happiness();
-        else if(!input.compare("sa"))sadnessNew();
-        else if(!input.compare("su"))surpriseNew1();
-        //else if(!input.compare("su2"))surpriseNew2();
-        //else if(!input.compare("su3"))surpriseNew3();
-        //else if(!input.compare("su4"))surpriseNew4();
-        else
-          cout << "Invalid." << endl;
-      }while(input.compare("up") != 0);
+        input.clear();
+        cout << "Alfabeto" << endl;
+        int k=0;
+        getline(cin, input);
+        if(!input.empty()){
+          while(input[k] != '\0'){
+            letra(input[k], tAlfabeto);
+            gpioDelay(1000000);
+            k++;
+          }
+        }
+      }while(input.compare("**") != 0);
     }else if(input[0] == '3'){
       do{
       input.clear();
-      cout << "Optimal Haptices - Select pattern: " << endl;
+      cout << "Braille" << endl;
+      int k=0;
       getline(cin, input);
-      if(!input.empty())
-        if(!input.compare("an"))anger();
-        else if(!input.compare("di"))disgust();
-        else if(!input.compare("fe"))fear();
-        else if(!input.compare("ha"))happiness();
-        else if(!input.compare("sa"))sadness();
-        else if(!input.compare("su"))surprise();
-        else
-          cout << "Invalid." << endl;
-        }while(input.compare("up") != 0);
+      if(!input.empty()){
+        while(input[k] != '\0'){
+          braille(input[k], 2000);
+          k++;
+          gpioDelay(1000000);
+
+        }
+      }
+      }while(input.compare("**") != 0);
     }else if(input[0] == '4'){
       input.clear();
-      cout << input << "Read file - Alphabet - " << endl;
+      cout << "Read file - Alphabet - " << endl;
       fp = fopen("input.txt", "r");
       if(!fp){
         cout << "Error opening file" << endl;
@@ -103,22 +101,8 @@ int main()
       }
       fclose(fp);
     }else if(input[0] == '5'){
-      do{
       input.clear();
-      cout << input << "Input - Alphabet - " << endl;
-      int k=0;
-      getline(cin, input);
-      if(!input.empty()){
-        while(input[k] != '\0'){
-          letra(input[k], 150);
-          gpioDelay(1000000);
-          k++;
-        }
-      }
-      }while(input.compare("**") != 0);
-    }else if(input[0] == '6'){
-      input.clear();
-      cout << input << "Read file - Braille - " << endl;
+      cout << "Read file - Braille - " << endl;
       fp = fopen("input.txt", "r");
       if(!fp){
         cout << "Error opening file" << endl;
@@ -133,70 +117,42 @@ int main()
         gpioDelay(500000);
       }
       fclose(fp);
-    }else if(input[0] == '7'){
-      do{
-      input.clear();
-      cout << input << "Input - Braille - " << endl;
-      int k=0;
-      getline(cin, input);
-      if(!input.empty()){
-        while(input[k] != '\0'){
-          braille(input[k], 2000);
-          k++;
-          gpioDelay(1000000);
+    }else if(input[0] == '6'){
 
-        }
-      }
-      }while(input.compare("**") != 0);
+    }else if(input[0] == '7'){
+      
     }else if(input[0] == '8'){
       input.clear();
-
       int m=0, time=100;
-
       cout << "Select motor by number: ";
       getline(cin, input);
       if(!input.empty()){
         stringstream(input) >> m;
         input.clear();
-
         cout << "For how long? (ms): ";
         getline(cin, input);
         if(!input.empty())
           stringstream(input) >> time;
-
         motorOnTime(m, time);
       }
-    }else if(input[0] == 'c'){
-    int j=1;
+    }else if(input[0] == '0'){
       do{
-      input.clear();
-      getline(cin, input);
-      if(!input.empty()){
-      //stringstream(input) >> j;
-      cout << "Motor ON: "<< j << endl;
-      motorOnTime(j, 1000);
-      j++;
-
-      }
-      }while(input.compare("a") != 0);
-      for(int k=1; k<= 100; k++)
-      motorOff(k);
-    }else if(input[0] == '9' && input[1] == '9'){
-      //for(int k=1; k<= 100; k++)
-      //motorOnTime(k, 1000);
-        turnOn(10, 1);
-        gpioDelay(1000000);
-        turnOff(10, 1);
-
-      /*for(int h=1; h<=12; h++){
-      turnOn(0, h);
-      gpioDelay(1000000);
-      turnOff(0, h);
-      gpioDelay(1000000);
-      }*/
-
+        input.clear();
+        cout << "Configuracoes" << endl;
+        cout << "1 - Tempo/Motor Alfabeto" << endl;
+        getline(cin, input);
+        if(!input.empty()){
+          if(input[0] == '1'){
+            cout << "Tempo atual: " << tAlfabeto << endl;
+            cout << "Digite o novo tempo em ms:" << endl;
+            getline(cin, input);
+            if(!input.empty())
+              stringstream(input) >> tAlfabeto;
+              cout << "Novo tempo: " << tAlfabeto << endl;
+          }
+        }
+      }while(input.compare("up") != 0);
     }
-  }
 }while(input.compare("exit"));
   gpioTerminate();
   return 0;
