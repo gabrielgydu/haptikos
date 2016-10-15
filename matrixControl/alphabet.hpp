@@ -39,7 +39,7 @@ void letraA(int time){
     motorOnTime2(81, 82, time);
     motorMultiplex(91, 81, 82, time/2);
     motorOnTime(91, time);
-
+    gpioDelay(time*5000);
     motorOnTime(68, time);
     motorOnTime2(67, 68, time/2);
     motorOnTime(67, time);
@@ -942,7 +942,7 @@ void letraT(int time){
     motorOnTime2(4, 14, time);
     motorOnTime4(3, 13, 4, 14, time/2);
     motorOnTime2(3, 13, time);
-
+    gpioDelay(time*5000);
     motorOnTime2(15, 16, time);
     motorOnTime4(25, 26, 15, 16, time/2);
     motorOnTime2(25, 26, time);
@@ -1161,8 +1161,6 @@ void letraY(int time){
     motorMultiplex(46, 36, 37, time/2);
     motorOnTime(46, time);
 
-
-
     motorOnTime(3, time);
     motorMultiplex(13, 14, 3, time/2);
     motorOnTime2(13, 14, time);
@@ -1198,7 +1196,7 @@ void letraZ(int time){
     motorOnTime2(3, 4, time/2);
     motorOnTime(3, time);
 
-    gpioDelay(500000);
+    gpioDelay(time*5000);
 
     motorMultiplex(13, 14, 3, time/2);
 
@@ -1220,8 +1218,8 @@ void letraZ(int time){
     motorMultiplex(98, 87, 88, time/2);
     motorOnTime(98, time);
 
-    gpioDelay(500000);
-
+    gpioDelay(time*5000);
+    
     motorOnTime2(97, 98, time/2);
 
     motorOnTime(97, time);
