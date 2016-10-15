@@ -32,34 +32,6 @@
 #define ROW2    21
 #define ROW1    19
 
-void configPins();
-void motorOnTime(int motorNumber, int time);
-void motorOn(int motorNumber);
-void motorOff(int motorNumber);
-void motorOnTime4(int m1, int m2, int m3, int m4, int time);
-void motorOn4(int m1, int m2, int m3, int m4);
-void motorOff4(int m1, int m2, int m3, int m4);
-void motorOnTime2(int m1, int m2, int time);
-void motorOn2(int m1, int m2);
-void motorOff2(int m1, int m2);
-void turnOff(int row, int col);
-void turnOn(int row, int col);
-void turnOffRow();
-void turnOffCol();
-
-void anger();
-void happiness();
-void sadness();
-void sadnessNew();
-void surprise();
-void surpriseNew();
-
-void braillePointOn();
-void braillePointOff();
-void braillePointOnTime();
-
-void brailleCell(char points[5], int time);
-
 
 void configPins(){
         gpioSetMode(COL1, PI_OUTPUT);
@@ -109,61 +81,6 @@ void configPins(){
         gpioSetPullUpDown(ROW8, PI_PUD_DOWN);
         gpioSetPullUpDown(ROW9, PI_PUD_DOWN);
         gpioSetPullUpDown(ROW10, PI_PUD_DOWN);
-
-        turnOffRow();
-        turnOffCol();
-}
-
-void motorOnTime(int motorNumber, int time){
-    motorOn(motorNumber);
-    gpioDelay(time*1000);
-    motorOff(motorNumber);
-}
-
-void motorOn(int motorNumber){
-    if (motorNumber < 10){
-        if(motorNumber == 1)
-            turnOn(4, 11);
-        else
-            turnOn(1, motorNumber);
-    }else if(motorNumber%10 == 0){
-        if(motorNumber == 10 || motorNumber == 20 || motorNumber == 50 || motorNumber == 90 || motorNumber == 100)
-            turnOn((motorNumber/10), 12);
-        else
-            turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
-    }else{//Ex: 88 = (((88/10)+1), (88modulo10)
-        if(motorNumber == 11 || motorNumber == 41)
-            turnOn((motorNumber/10)+2, 11);//ROW3 pro 11 e ROW6 pro 41
-        else if(motorNumber == 81)
-            turnOn(8, 11);
-        else if(motorNumber == 91)
-            turnOn(7, 11);
-        else
-            turnOn((motorNumber/10)+1, motorNumber%10);
-    }
-}
-
-void motorOff(int motorNumber){
-    if (motorNumber < 10){
-        if(motorNumber == 1)
-            turnOff(4, 11);
-        else
-            turnOff(1, motorNumber);
-    }else if(motorNumber%10 == 0){
-        if(motorNumber == 10 || motorNumber == 20 || motorNumber == 50 || motorNumber == 90 || motorNumber == 100)
-            turnOff((motorNumber/10), 12);
-        else
-            turnOff((motorNumber/10), (motorNumber/(motorNumber/10)));
-    }else{//Ex: 88 = (((88/10)+1), (88modulo10)
-        if(motorNumber == 11 || motorNumber == 41)
-            turnOff((motorNumber/10)+2, 11);//ROW3 pro 11 e ROW6 pro 41
-        else if(motorNumber == 81)
-            turnOff(8, 11);
-        else if(motorNumber == 91)
-            turnOff(7, 11);
-        else
-            turnOff((motorNumber/10)+1, motorNumber%10);
-    }
 }
 
 void turnOn(int row, int col){
@@ -326,6 +243,64 @@ switch(col){
 }
 
 }
+
+void motorOn(int motorNumber){
+    if (motorNumber < 10){
+        if(motorNumber == 1)
+            turnOn(4, 11);
+        else
+            turnOn(1, motorNumber);
+    }else if(motorNumber%10 == 0){
+        if(motorNumber == 10 || motorNumber == 20 || motorNumber == 50 || motorNumber == 90 || motorNumber == 100)
+            turnOn((motorNumber/10), 12);
+        else
+            turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
+    }else{//Ex: 88 = (((88/10)+1), (88modulo10)
+        if(motorNumber == 11 || motorNumber == 41)
+            turnOn((motorNumber/10)+2, 11);//ROW3 pro 11 e ROW6 pro 41
+        else if(motorNumber == 81)
+            turnOn(8, 11);
+        else if(motorNumber == 91)
+            turnOn(7, 11);
+        else
+            turnOn((motorNumber/10)+1, motorNumber%10);
+    }
+}
+
+
+void motorOff(int motorNumber){
+    if (motorNumber < 10){
+        if(motorNumber == 1)
+            turnOff(4, 11);
+        else
+            turnOff(1, motorNumber);
+    }else if(motorNumber%10 == 0){
+        if(motorNumber == 10 || motorNumber == 20 || motorNumber == 50 || motorNumber == 90 || motorNumber == 100)
+            turnOff((motorNumber/10), 12);
+        else
+            turnOff((motorNumber/10), (motorNumber/(motorNumber/10)));
+    }else{//Ex: 88 = (((88/10)+1), (88modulo10)
+        if(motorNumber == 11 || motorNumber == 41)
+            turnOff((motorNumber/10)+2, 11);//ROW3 pro 11 e ROW6 pro 41
+        else if(motorNumber == 81)
+            turnOff(8, 11);
+        else if(motorNumber == 91)
+            turnOff(7, 11);
+        else
+            turnOff((motorNumber/10)+1, motorNumber%10);
+    }
+}
+
+void motorOnTime(int motorNumber, int time){
+    motorOn(motorNumber);
+    gpioDelay(time*1000);
+    motorOff(motorNumber);
+}
+
+
+
+
+
 void turnOffCol(){
 int o=1;
     	gpioWrite(COL1, o);
