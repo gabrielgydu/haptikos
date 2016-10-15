@@ -7,6 +7,7 @@
 
 #include "functions.hpp"
 #include "alphabet.hpp"
+#include "braille.hpp"
 
 using namespace std;
 
@@ -45,12 +46,12 @@ int main()
         cout << "Haptices: " << endl;
         getline(cin, input);
         if(!input.empty())
-          if(!input.compare("an"))angerNew();
+          if(!input.compare("an"))anger();
           else if(!input.compare("di"))disgust();
           else if(!input.compare("fe"))fear();
           else if(!input.compare("ha"))happiness();
-          else if(!input.compare("sa"))sadnessNew();
-          else if(!input.compare("su"))surpriseNew1();
+          else if(!input.compare("sa"))sadness();
+          else if(!input.compare("su"))surprise();
           else
             cout << "Invalid." << endl;
       }while(input.compare("up") != 0);
