@@ -733,7 +733,7 @@ void letraO(int time){
 }
 
 void letraP(int time){
-        motorOnTime(8, time);
+    motorOnTime(8, time);
     motorOnTime2(18, 8, time/2);
     motorOnTime(18, time);
     motorOnTime2(28, 18, time/2);
@@ -754,23 +754,23 @@ void letraP(int time){
     motorOnTime(98, time);
 
     motorOnTime(8, time);
-    motorOnTime2(7, 8, time/2);
+    motorOnTime2(7, 8, time);
     motorOnTime(7, time);
-    motorOnTime2(6, 7, time/2);
+    motorOnTime2(6, 7, time);
     motorOnTime(6, time);
-    motorMultiplex(5, 15, 6, time/2);
+    motorMultiplex(5, 15, 6, time);
     motorOnTime2(5, 15, time);
-    motorMultiplex(24, 5, 15, time/2);
+    motorMultiplex(24, 5, 15, time);
     motorOnTime(24, time);
-    motorOnTime2(34, 24, time/2);
+    motorOnTime2(34, 24, time);
     motorOnTime(34, time);
-    motorMultiplex(44, 45, 34, time/2);
+    motorMultiplex(44, 45, 34, time);
     motorOnTime2(44, 45, time);
-    motorMultiplex(56, 44, 45, time/2);
+    motorMultiplex(56, 44, 45, time);
     motorOnTime(56, time);
-    motorOnTime2(57, 56, time/2);
+    motorOnTime2(57, 56, time);
     motorOnTime(57, time);
-    motorOnTime2(58, 57, time/2);
+    motorOnTime2(58, 57, time);
     motorOnTime(58, time);
 }
 
@@ -1219,7 +1219,7 @@ void letraZ(int time){
     motorOnTime(98, time);
 
     gpioDelay(time*5000);
-    
+
     motorOnTime2(97, 98, time/2);
 
     motorOnTime(97, time);
@@ -1330,9 +1330,10 @@ void letra(char l, int time){
     case '*':
     break;
     default:
-        gpioDelay(50000);
-        space(time*2);
-        gpioDelay(50000);
+    gpioDelay(1500000);
+        //gpioDelay(50000);
+        //space(time*2);
+        //gpioDelay(50000);
     break;
     }
 }

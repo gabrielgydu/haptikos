@@ -6,22 +6,32 @@
 void braillePointOn(int point){
 	switch(point){
 		case 4:
-			motorOn2(1, 11);
+			//motorOn2(1, 11);
+			//motorOn(1);
+			motorOn(4);
 			break;
 		case 5:
-			motorOn(41);
+			//motorOn(41);
+			motorOn(44);
 			break;
 		case 6:
-			motorOn2(81, 91);
+			//motorOn2(81, 91);
+			//motorOn(81);
+			motorOn(84);
 			break;
 		case 1:
-			motorOn2(10, 20);
+			//motorOn2(10, 20);
+			//motorOn(10);
+			motorOn(8);
 			break;
 		case 2:
-			motorOn(50);
+			//motorOn(50);
+			motorOn(48);
 		break;
 		case 3:
-			motorOn2(90, 100);
+			//motorOn2(90, 100);
+			//motorOn(90);
+			motorOn(88);
 		break;
 		default:
 			break;
@@ -31,31 +41,54 @@ void braillePointOn(int point){
 void braillePointOff(int point){
     switch(point){
         case 4:
-            motorOff2(1, 1);
+            //motorOff2(1, 11);
+            //motorOff(1);
+            motorOff(4);
             break;
         case 5:
-            motorOff(41);
+            //motorOff(41);
+            motorOff(44);
             break;
         case 6:
-            motorOff2(81, 91);
+            //motorOff2(81, 91);
+            //motorOff(81);
+            motorOff(84);
             break;
         case 1:
-            motorOff2(10, 20);
+            //motorOff2(10, 20);
+            //motorOff(10);
+            motorOff(8);
             break;
         case 2:
-            motorOff(50);
+            //motorOff(50);
+            motorOff(48);
         break;
         case 3:
-            motorOff2(90, 100);
+            //motorOff2(90, 100);
+            //motorOff(90);
+            motorOff(88);
         break;
         default:
             break;
     }
 }
 void braillePointOnTime(int point, int time){
+            /*if(point == 1){
+                braillePointOn(point);
+                gpioDelay(time*1000);
+                braillePointOff(point);
+            }else{
+            for(int h=0; h<100; h++){
+			braillePointOn(point);
+			gpioDelay(time*8);
+			braillePointOff(point);
+			gpioDelay(time*2);
+			}
+			}*/
 			braillePointOn(point);
 			gpioDelay(time*1000);
 			braillePointOff(point);
+
 }
 
 void brailleCell(char points[5], int time){
@@ -65,7 +98,7 @@ void brailleCell(char points[5], int time){
 			}
 	}
 
-	for(int k =0; k<=5; k++){
+	/*for(int k =0; k<=5; k++){
 		if(points[k] == '1'){
 			braillePointOn(k+1);
 			}
@@ -74,7 +107,7 @@ void brailleCell(char points[5], int time){
 		for(int l =0; l<=5; l++){
 		if(points[l] == '1')
 			braillePointOff(l+1);
-	}
+	}*/
 
 }
 
@@ -171,6 +204,9 @@ void braille(char l, int time){
         break;
     case 'Z':case 'z':
         brailleCell("101011", time);//Z
+        break;
+    case '.':
+        brailleCell("00100", time);//Z
         break;
     case '*':
     break;

@@ -7,13 +7,15 @@
 //
 
 
-#define COL12   23
+//#define COL12   23
 #define COL11   24
 #define COL10   27
 #define COL9    10
 #define COL8    25
 #define COL7    7
 #define COL6    11
+#define COL6 23 // COL 12
+
 #define COL5    12
 #define COL4    13
 #define COL3    20
@@ -45,7 +47,7 @@ void configPins(){
     gpioSetMode(COL9, PI_OUTPUT);
     gpioSetMode(COL10, PI_OUTPUT);
     gpioSetMode(COL11, PI_OUTPUT);
-    gpioSetMode(COL12, PI_OUTPUT);
+    //gpioSetMode(COL12, PI_OUTPUT);
 
     gpioSetMode(ROW1, PI_OUTPUT);
     gpioSetMode(ROW2, PI_OUTPUT);
@@ -69,7 +71,7 @@ void configPins(){
     gpioSetPullUpDown(COL9, PI_PUD_DOWN);
     gpioSetPullUpDown(COL10, PI_PUD_DOWN);
     gpioSetPullUpDown(COL11, PI_PUD_DOWN);
-    gpioSetPullUpDown(COL12, PI_PUD_DOWN);
+    //gpioSetPullUpDown(COL12, PI_PUD_DOWN);
 
     gpioSetPullUpDown(ROW1, PI_PUD_DOWN);
     gpioSetPullUpDown(ROW2, PI_PUD_DOWN);
@@ -157,7 +159,7 @@ void turnOn(int row, int col){
             gpioWrite(COL11, o);
         break;
             case 12:
-            gpioWrite(COL12, o);
+            //gpioWrite(COL12, o);
         break;
         default:
         break;
@@ -238,7 +240,7 @@ void turnOff(int row, int col){
             gpioWrite(COL11, o);
         break;
             case 12:
-            gpioWrite(COL12, o);
+            //gpioWrite(COL12, o);
         break;
         default:
         break;
@@ -253,7 +255,8 @@ void motorOn(int motorNumber){
             turnOn(1, motorNumber);
     }else if(motorNumber%10 == 0){
         if(motorNumber == 10 || motorNumber == 20 || motorNumber == 50 || motorNumber == 90 || motorNumber == 100)
-            turnOn((motorNumber/10), 12);
+            //turnOn((motorNumber/10), 12);
+            gpioDelay(1000);
         else
             turnOn((motorNumber/10), (motorNumber/(motorNumber/10)));
     }else{
@@ -310,7 +313,7 @@ void turnOffCol(){
     gpioWrite(COL9, 1);
     gpioWrite(COL10, 1);
     gpioWrite(COL11, 1);
-    gpioWrite(COL12, 1);
+    //gpioWrite(COL12, 1);
 }
 void turnOffRow(){
 	gpioWrite(ROW1, 0);

@@ -77,7 +77,7 @@ int main()
       getline(cin, input);
       if(!input.empty()){
         while(input[k] != '\0'){
-          braille(input[k], 2000);
+          braille(input[k], 1000);
           k++;
           gpioDelay(1000000);
 
@@ -119,8 +119,43 @@ int main()
       }
       fclose(fp);
     }else if(input[0] == '6'){
+        motorOnTime(8, 1000);
+        gpioDelay(1000000);
+        motorOnTime(48, 1000);
+        gpioDelay(1000000);
+        motorOnTime(88, 1000);
+        gpioDelay(1000000);
+        motorOnTime(4, 1000);
+        gpioDelay(1000000);
+        motorOnTime(44, 1000);
+        gpioDelay(1000000);
+        motorOnTime(84, 1000);
+
 
     }else if(input[0] == '7'){
+    for(int g=1; g<=100; g++){
+    cout << "Motor: " << g << endl;
+    motorOnTime(g, 500);
+    }}else if(input[0] == 't'){
+    do{
+    input.clear();
+    getline(cin, input);
+    if(!input.empty()){
+    if (input[0] == '1')
+    brailleCell("100000", 1000);
+    else if (input[0] == '2')
+    brailleCell("010000", 1000);
+    else if (input[0] == '3')
+    brailleCell("001000", 1000);
+    else if (input[0] == '4')
+    brailleCell("000100", 1000);
+    else if (input[0] == '5')
+    brailleCell("000010", 1000);
+    else if (input[0] == '6')
+    brailleCell("000001", 1000);
+    }
+    }while(input[0] != '*');
+
 
     }else if(input[0] == '8'){
       input.clear();
