@@ -79,7 +79,7 @@ int main()
         while(input[k] != '\0'){
           braille(input[k], 1000);
           k++;
-          gpioDelay(1000000);
+          gpioDelay(2000000);
 
         }
       }

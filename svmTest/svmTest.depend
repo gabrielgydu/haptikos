@@ -102,16 +102,57 @@
 
 1474468044 /home/gabriel/Dropbox/01 TC/dev/svmTraining/svm_data.hpp
 
-1475243201 source:/home/pi/haptikos/svmTest/main.cpp
+1477138779 source:/home/pi/haptikos/svmTest/main.cpp
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/ml/ml.hpp>
 	<stdio.h>
 	<stdlib.h>
-	"svm_data_bin.hpp"
-	"svm_data.hpp"
+	<string.h>
+	<iostream>
+	<fstream>
+	"/home/pi/haptikos/svmTraining/bin12.hpp"
+	"/home/pi/haptikos/svmTraining/bin13.hpp"
+	"/home/pi/haptikos/svmTraining/bin23.hpp"
+	"/home/pi/haptikos/svmTraining/multi12.hpp"
+	"/home/pi/haptikos/svmTraining/multi13.hpp"
+	"/home/pi/haptikos/svmTraining/multi23.hpp"
+	"testData1.hpp"
+	"testData2.hpp"
+	"testData3.hpp"
+	"testDataBin1.hpp"
+	"testDataBin2.hpp"
+	"testDataBin3.hpp"
 
 1475227095 /home/pi/haptikos/svmTest/svm_data_bin.hpp
 
 1475227095 /home/pi/haptikos/svmTest/svm_data.hpp
+
+1477137202 /home/pi/haptikos/svmTraining/bin12.hpp
+
+1477137206 /home/pi/haptikos/svmTraining/bin13.hpp
+
+1477137207 /home/pi/haptikos/svmTraining/bin23.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi12.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi13.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi23.hpp
+
+1476901167 /home/pi/haptikos/svmTest/testData.hpp
+
+1476901167 /home/pi/haptikos/svmTest/10features/testData.hpp
+
+1477137209 /home/pi/haptikos/svmTest/testData1.hpp
+
+1477137210 /home/pi/haptikos/svmTest/testData2.hpp
+
+1477137210 /home/pi/haptikos/svmTest/testData3.hpp
+
+1477137211 /home/pi/haptikos/svmTest/testDataBin1.hpp
+
+1477137211 /home/pi/haptikos/svmTest/testDataBin2.hpp
+
+1477137212 /home/pi/haptikos/svmTest/testDataBin3.hpp
 

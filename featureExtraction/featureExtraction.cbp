@@ -6,15 +6,6 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/featureExtraction" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/featureExtraction" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
@@ -23,6 +14,9 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-s" />
+					<Add directory="/usr/local/include" />
+					<Add directory="/home/pi/stasm/build" />
+					<Add directory="/usr/local/share/OpenCV/haarcascades" />
 					<Add directory="/home/pi/stasm/stasm" />
 				</Compiler>
 				<Linker>
@@ -43,7 +37,12 @@
 					<Add option="-lopencv_ts" />
 					<Add option="-lopencv_video" />
 					<Add option="-lopencv_videostab" />
+					<Add option="-lstasm" />
 					<Add library="/home/pi/stasm/build/libstasm.a" />
+					<Add directory="/usr/local/lib" />
+					<Add directory="/usr/local/bin" />
+					<Add directory="/home/pi/stasm/build" />
+					<Add directory="/home/pi/stasm/stasm" />
 				</Linker>
 			</Target>
 		</Build>
@@ -52,6 +51,7 @@
 		</Compiler>
 		<Linker>
 			<Add option="`opencv-config --ldstaticflags`" />
+			<Add library="/home/pi/stasm/build/libstasm.a" />
 		</Linker>
 		<Unit filename="lena.jpg" />
 		<Unit filename="main.cpp" />

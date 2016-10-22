@@ -79,15 +79,36 @@
 
 1442755762 /home/pi/svmTest/svm_data_bin_mug.hpp
 
-1475239499 source:/home/pi/haptikos/svmTraining/main.cpp
+1476928119 source:/home/pi/haptikos/svmTraining/main.cpp
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/ml/ml.hpp>
 	<stdio.h>
 	<stdlib.h>
-	"svm_data_bin.hpp"
+	<string.h>
+	"bin12.hpp"
+	"bin13.hpp"
+	"bin23.hpp"
+	"multi12.hpp"
+	"multi13.hpp"
+	"multi23.hpp"
+	"labels.hpp"
 
 1473736714 /home/pi/haptikos/svmTraining/svm_data.hpp
 
 1475238915 /home/pi/haptikos/svmTraining/svm_data_bin.hpp
+
+1477137202 /home/pi/haptikos/svmTraining/bin12.hpp
+
+1477137206 /home/pi/haptikos/svmTraining/bin13.hpp
+
+1477137207 /home/pi/haptikos/svmTraining/bin23.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi12.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi13.hpp
+
+1477137334 /home/pi/haptikos/svmTraining/multi23.hpp
+
+1476903435 /home/pi/haptikos/svmTraining/labels.hpp
 

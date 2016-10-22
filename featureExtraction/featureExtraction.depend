@@ -65,22 +65,25 @@
 1461162079 /usr/local/include/opencv2/highgui/highgui_c.h
 	"opencv2/core/core_c.h"
 
-1475053757 source:/home/pi/haptikos/featureExtraction/main.cpp
+1476917592 source:/home/pi/haptikos/featureExtraction/main.cpp
 	<ctime>
 	<iostream>
 	<cctype>
 	<iterator>
 	<stdio.h>
+	<iostream>
+	<iomanip>
+	<fstream>
 	<string.h>
 	<opencv2/core/core.hpp>
-	<opencv2/imgproc/imgproc.hpp>
-	<opencv2/highgui/highgui.hpp>
+	<opencv2//imgproc/imgproc.hpp>
+	<opencv2//highgui/highgui.hpp>
 	<stasm_lib.h>
 	<stasm.h>
 
 1388180368 /home/pi/stasm/stasm/stasm_lib.h
 
-1388180368 /home/pi/stasm/stasm/stasm.h
+1476879782 /home/pi/stasm/stasm/stasm.h
 	"opencv/cv.h"
 	"opencv/highgui.h"
 	<stdio.h>
@@ -501,4 +504,25 @@
 1388180368 /home/pi/stasm/stasm/shape17.h
 
 1388180368 /home/pi/stasm/stasm/startshape.h
+
+1476125775 source:/home/pi/featureExtraction/main.cpp
+	<ctime>
+	<iostream>
+	<cctype>
+	<iterator>
+	<stdio.h>
+	<string.h>
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<stasm_lib.h>
+	<stasm.h>
+
+1461162079 /usr/local/include/opencv2//imgproc/imgproc.hpp
+	"opencv2/core/core.hpp"
+	"opencv2/imgproc/types_c.h"
+
+1461162079 /usr/local/include/opencv2//highgui/highgui.hpp
+	"opencv2/core/core.hpp"
+	"opencv2/highgui/highgui_c.h"
 
